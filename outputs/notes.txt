@@ -1,0 +1,20 @@
+3 layer neural network (1 hidden layer)
+
+30  hidden layer neurons    =>   87.91% accuracy on test set
+300 hidden layer neurons    =>   94.04% accuracy on test set
+
+Regularization parameter learning
+For 30 neurons, following lambda values and their accuracy
+________________________
+Lambda			Accuracy
+------------------------
+0.1				73.2
+0.3				67.1
+0.9				72.2
+2.7				72.5
+8.1				68.7
+24.3			74.0
+72.9			70.0
+218.7			71.9
+656.1			71.3
+1968.3			67.1
