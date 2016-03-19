@@ -5,7 +5,7 @@ This is a 3-layer neural network. With 300 hidden elements, this script was able
 
 Implemented in Octave (Open source Matlab alternative)
 
-Huge thanks to Andrew Ng's [Machine Learning course](www.ml-class.org). A lot of code here have been taken from the course's assignments and modifying them slightly for this purpose.
+Huge thanks to Andrew Ng's [Machine Learning course](http://www.ml-class.org). A lot of code here have been taken from the course's assignments and modifying them slightly for this purpose.
 
 To train your network and predict the output for the test set, supply the number of hidden layer neurons and the regularization parameter as follows:
 
