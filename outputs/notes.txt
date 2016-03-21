@@ -8,6 +8,9 @@ For 30 neurons, following lambda values and their accuracy
 ________________________
 Lambda			Accuracy
 ------------------------
+0.01			74.85
+0.03			69.4
+0.09			67.8
 0.1				73.2
 0.3				67.1
 0.9				72.2
