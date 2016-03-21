@@ -33,29 +33,43 @@ regularizedThetaSum = (lambda/(2*m)) * ( sum(sum((regularizedTheta1 .^ 2))) + su
 J = J + regularizedThetaSum;
 
 % Compute gradients using backpropagation
-% TODO: Vectorize the backpropagation instead of using loops
 DELTA1 = zeros(size(Theta1));
 DELTA2 = zeros(size(Theta2));
 A2 = h1;
 A3 = h2;
-for i = 1:m
+
+% Vectorized backprop begin
+thetaonex = Theta1 * [ones(m,1) X]';
+z2 = [ones(m,1) thetaonex'];
+siggradz2 = sigmoid(z2) .* (1 - sigmoid(z2));
+delta3 = A3 - expandedY;
+delta2 = (Theta2' * delta3') .* siggradz2';
+DELTA2 = delta3' * [ones(m,1) A2];
+DELTA1 = delta2(2:end,:) * [ones(m,1) X];
+% Vectorized backprop end
+
+% Non-vectorized backprop begin
+% for i = 1:m
     % Compute/get the layers
-    a1 = X(i,:);
-    a2 = A2(i,:);
-    a3 = A3(i,:);
-    curExpandedY = expandedY(i,:);
-    
+%     a1 = X(i,:);
+%     a2 = A2(i,:);
+%     a3 = A3(i,:);
+%     curExpandedY = expandedY(i,:);
+%     
     % Computing z value
-    thetaOneX = Theta1 * [1 a1]';
-    z2 = [1 ; thetaOneX];
-    sigGradz2 = sigmoid(z2) .* (1 - sigmoid(z2));
-    
-    %Compute delta and DELTA
-    delta3 = a3 - curExpandedY;
-    delta2 = (Theta2' * delta3') .* sigGradz2;
-    DELTA2 = DELTA2 + (delta3' * [1 a2]);
-    DELTA1 = DELTA1 + (delta2(2:end) * [1 a1]);
-end
+%     thetaOneX = Theta1 * [1 a1]';
+%     z2 = [1 ; thetaOneX];
+%     sigGradz2 = sigmoid(z2) .* (1 - sigmoid(z2));
+%     
+%     %Compute delta and DELTA
+%     delta3 = a3 - curExpandedY;
+%     delta2 = (Theta2' * delta3') .* sigGradz2;
+%     DELTA2 = DELTA2 + (delta3' * [1 a2]);
+%     DELTA1 = DELTA1 + (delta2(2:end) * [1 a1]);
+% end
+% Non-vectorized backprop end
+
+% Divide the overall gradient by m to get the gradient for one example
 Theta1_grad = DELTA1/m;
 Theta2_grad = DELTA2/m;
 
