@@ -21,7 +21,7 @@ if( ! exist("lambda", "lambda"))
 % Getting ready for the training
 
 % A reasonable value for max_iter
-options = optimset('MaxIter', 50);
+options = optimset('MaxIter', 100);
 
 % Create "short hand" for the cost function to be minimized
 costFunction = @(p) costAndGradient(p, ...
